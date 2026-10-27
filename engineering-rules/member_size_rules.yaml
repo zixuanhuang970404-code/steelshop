@@ -1,0 +1,7 @@
+rules:
+  - id: MEMBER_SIZE_MISMATCH
+    enabled: true
+    severity: HIGH
+    requires: [unique_member_mark_on_both_sides]
+    comparison: normalized_section_inequality
+    message: Member size differs from engineer-issued drawing. Verify intended substitution.

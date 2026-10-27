@@ -1,0 +1,5 @@
+normalization:
+  uppercase: true
+  remove_whitespace: true
+  convert_multiplication_sign_to_x: true
+  no_unverified_section_equivalence: true
