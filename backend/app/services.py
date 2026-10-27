@@ -2,11 +2,11 @@
 import re
 import fitz
 
-SECTION = r"(?:W\\s*\\d+\\s*[Xx×]\\s*\\d+(?:\\.\\d+)?|UB\\s*\\d+\\s*[Xx×]\\s*\\d+\\s*[Xx×]\\s*\\d+|HSS\\s*\\d+(?:\\.\\d+)?\\s*[Xx×]\\s*\\d+(?:\\.\\d+)?\\s*[Xx×]\\s*\\d+(?:/\\d+|\\.\\d+)?)"
-PAIR = re.compile(rf"\\b(?P<mark>[BC]\\d+[A-Z]?)\\s*[:=\\-]?\\s*(?P<section>{SECTION})\\b", re.IGNORECASE)
+SECTION = r"(?:W\s*\d+\s*[Xx×]\s*\d+(?:\.\d+)?|UB\s*\d+\s*[Xx×]\s*\d+\s*[Xx×]\s*\d+|HSS\s*\d+(?:\.\d+)?\s*[Xx×]\s*\d+(?:\.\d+)?\s*[Xx×]\s*\d+(?:/\d+|\.\d+)?)"
+PAIR = re.compile(rf"\b(?P<mark>[BC]\d+[A-Z]?)\s*[:=\-]?\s*(?P<section>{SECTION})\b", re.IGNORECASE)
 
 def normalize_section(value: str) -> str:
-    return re.sub(r"\\s+", "", value.upper().replace("×", "X"))
+    return re.sub(r"\s+", "", value.upper().replace("×", "X"))
 
 def extract_member_records(pdf_bytes: bytes) -> list[dict]:
     try:
